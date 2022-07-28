@@ -1,0 +1,45 @@
+#produtos{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2%;
+    display: flex;
+}
+
+h2{
+    text-align: center;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}
+
+.nome{
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.add{
+    color: green;
+}
+
+.remove{
+    color: red;
+}
+
+#carrinho{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.produto-single{
+    width: 33.3%;
+    padding: 0 20px;
+}

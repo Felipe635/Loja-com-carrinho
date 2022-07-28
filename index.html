@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <h2>Vitrine</h2>
+    <div id="produtos">
+        
+    </div>
+    <h2>Carrinho</h2>
+    <div id="carrinho">
+       
+    </div>
+
+    <script>
+        const items = [
+            {
+                id: 0,
+                nome: 'Camiseta',
+                img: 'camiseta.jpg',
+                quant: 0
+            },
+            {
+                id: 1,
+                nome: 'Short',
+                img: 'short.jpg',
+                quant: 0
+            },
+            {
+                id: 2,
+                nome: 'Sapato',
+                img: 'sapato.jpg',
+                quant: 0
+            },
+        ]
+
+        iniciarLoja = () => {
+            var containerProdutos = document.getElementById('produtos');
+            items.map((val)=>{
+                containerProdutos.innerHTML += `
+                <div class="produto-single">
+                    <img src="`+val.img+`" />
+                    <p class="nome">`+val.nome+`</p>
+                    <a key="`+val.id+`" href="#" class="add">Adicionar ao carrinho</a><br><br>
+                    <a key="`+val.id+`" href="#" class="remove">Remover do carrinho</a>
+                    </div>
+                `;
+            });
+        }
+
+        iniciarLoja();
+
+        atualizarCarrinho = () => {
+            var containerCarrinho = document.getElementById('carrinho');
+            containerCarrinho.innerHTML = "";
+            items.map((val) =>{
+                if(val.quant > 0){
+                    containerCarrinho.innerHTML +=`
+
+                    <p>`+val.nome+` | quantidade: `+val.quant+`</p>
+                    <hr>
+                    `
+                
+                }
+            })
+        }
+
+        var links = document.getElementsByClassName("add");
+
+        var linkR = document.getElementsByClassName("remove");
+
+        for(var i = 0; i < links.length; i++){
+            links[i].addEventListener("click",function(){
+                let key = this.getAttribute('key');
+                items[key].quant++;
+                atualizarCarrinho();
+                return false;
+            })
+        }
+
+        for(var i = 0; i < linkR.length; i++){
+            linkR[i].addEventListener("click",function(){
+                let key = this.getAttribute('key');
+                items[key].quant--;
+                atualizarCarrinho();
+                return false;
+            })
+        }
+
+
+    </script>
+</body>
+</html>
